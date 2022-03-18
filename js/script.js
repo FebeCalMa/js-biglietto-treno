@@ -13,15 +13,26 @@ L'output del prezzo finale va messo fuori in forma umana
 Questo richiederà un minimo di ricerca.
 */
 
-//dati da chiedere 
-const kmDaPercorrere = parseInt ( prompt('Km da percorrere?') );
-const eta = parseInt ( prompt ('Età'));
+//dati da chiedere
+const kmDaPercorrere = parseInt(prompt("Km da percorrere?"));
+const eta = parseInt(prompt("Età"));
 
-
-//calcolare
+//calcolare il costo dei km
 if (!isNaN(kmDaPercorrere) && !isNaN(eta)) {
-  
+  let prezzoTotale = kmDaPercorrere * 0.21;
+
+  //prezzo s'è minore da 18
+  if (eta < 18) {
+    prezzoTotale = prezzoTotale * 0.2;
+
+    //prezzo s'è maggiore 65
+  } else if (eta > 65) {
+    prezzoTotale = prezzoTotale * 0.4;
+  }
+
+  //Totale in linguaggio umano
+  document.getElementById(
+    "prezzo-biglietto"
+  ).innerText = `Il prezzo è ${prezzoTotale.toFixed(2)} 
+  per km ${kmDaPercorrere} ed età ${eta}`;
 }
-const scontoMin;
-const scontoOver;
-const prezzoTotale;
